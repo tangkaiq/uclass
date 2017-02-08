@@ -1,0 +1,100 @@
+Question 1
+
+class StackFullException(Exception):
+    pass
+    
+
+class SpecialStack:
+    
+    '''A last-in, first-out (LIFO) stack of integer items and limited capacity'''
+    
+    def __init__(self, max_capacity):
+        '''(SpecialStack, int) -> None
+        A new empty SpecialStack.'''
+        self._data = []
+        self._max_capacity = max_capacity
+            
+            
+    def push(self, item):
+        '''(SpecialStack, int) -> None
+        Place item on top of the stack.
+        
+        >>> s = SpecialStack(2)
+        >>> s.push(1)
+        >>> s.push('a')
+        ... TypeError raised: Sorry. Only integers are permitted
+        >>> s.push(2)
+        >>> s.push(3)
+        ... StackFullException raised: Sorry. Maximum capacity reached
+        '''
+        
+        if len(self._data) == self._max_capacity: 
+            raise StackFullException('Sorry. Maximum capacity reached')
+        
+        elif not isinstance(item, int):
+            raise TypeError('Sorry. Only integers are permitted')
+        
+        else:
+            self._data.append(item)
+            
+            
+----------
+
+Question 2
+
+mystery swaps the bottom element of stack o1 with the back element of queue o2.
+
+Note: words like "first", "last", "left", "right", "index 0", "index -1" are too imprecise and are not correctly using the stack/queue terminology. Stacks and queues have no notion of indices or left/right. First and last could refer to the order of insertion or the order of removal -- it is unclear. Please be careful with your terminology!
+
+
+----------
+
+Question 3
+
+>>> c1 = Car("Toyota Camry", 1995)
+Car object created					
+
+
+>>> c2 = HybridCar("Toyota Prius", 2017, "electric-petroleum")
+Car object created					
+Hybrid Car Object Created			
+    
+    
+>>> c1.change_breaks()
+....AttributeError: 'Car' object has no attribute 'change_breaks'  
+ 
+ 
+>>> c1.get_CO2_emissions()
+300									
+
+
+>>> c2.change_oil()
+"Oil changed"						
+
+
+>>> c2.get_CO2_emissions()			
+150
+
+    
+>>> print(c2)
+A Toyota Prius 2017 car				
+
+
+----------
+
+Question 4
+
+def number_of_digits(n):
+    '''(int) -> int
+    Return the number of digits in n. n >= 0.
+    
+    >>> number_of_digits(2)
+    1
+    >>> number_of_digits(8272)
+    4
+    '''
+    
+    if n < 10:
+        return 1
+    return 1 + number_of_digits(n//10)
+    
